@@ -1,6 +1,6 @@
 import Foundation
 import Leaf
-import SwiftGD
+//import SwiftGD
 import Vapor
 
 func routes(_ app: Application) throws {
