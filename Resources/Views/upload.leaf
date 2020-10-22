@@ -1,0 +1,50 @@
+#extend("master"):
+#export("body"):
+<h1>#(index.title)</h1>
+<p>#(page.content)</p>
+<script>
+function submitData() {
+
+  var question = document.getElementById("questionField").value;
+  var description = document.getElementById("descriptionField").value;
+
+  var optionAText = document.getElementById("optionAText").value;
+  var optionARadio = document.getElementById("radioOptionA");
+
+  var optionBText = document.getElementById("optionBText").value;
+  var optionBRadio = document.getElementById("radioOptionB");
+
+  var questionJSON = {
+    quizOptions:[],
+    quizDescription: "",
+    quizTitle: ""
+  }
+
+  questionJSON.quizTitle = question;
+  questionJSON.quizDescription = description;
+
+  questionJSON.quizOptions.push({answer: optionAText, isCorrect: optionARadio.checked ? true : false});
+  questionJSON.quizOptions.push({answer: optionBText, isCorrect: optionBRadio.checked ? true : false});
+
+  console.log(questionJSON);
+}
+</script>
+<form onsubmit="submitData()">
+  <label>Question</label>
+  <input type="text" name="question" id="questionField" value="" /><br>
+  <label>Description</label>
+  <input type="text" name="description" id="descriptionField" value="" />  <br>
+  <input type="radio" id="radioOptionA" name="radioOptionA" value="">
+  <input type="text" name="optionAText" id="optionAText" value="" /><br>
+  <input type="radio" id="radioOptionB" name="radioOptionB" value="">
+  <input type="text" name="optionBText" id="optionBText" value="" /><br>
+  <input type="radio" id="radioOptionC" name="radioOptionC" value="">
+  <input type="text" name="optionCText" id="optionCText" value="" /><br>
+  <input type="radio" id="radioOptionD" name="radioOptionD" value="">
+  <input type="text" name="optionDText" id="optionDText" value="" /><br>
+  <input type="submit" onClick="submitData()">
+</form>
+#endexport
+#endextend
+
+
